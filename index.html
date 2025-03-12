@@ -1,25 +1,46 @@
-<html>
-<body>
-	<h1>Chat bot</h1>
-</body>
-	<script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+<script type='text/javascript'>
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+            window.addEventListener("onEmbeddedMessagingReady", () => {
+                console.log("Received the onEmbeddedMessagingReady event…");
 
-			embeddedservice_bootstrap.init(
-				'00Ddw0000007iNh',
-				'Bsky_Testing',
-				'https://capeunionmart--dev.sandbox.my.site.com/ESWBskyTesting1741612500052',
-				{
-					scrt2URL: 'https://capeunionmart--dev.sandbox.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
+                // Send data to Salesforce
+                embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(
+                    {
+                        "Brand": "Poetry",
+                        "Customer_Service_Email": "customer-service@poetrystores.co.za",
+                        "Order_Tracking_URL": "<a style=\"color: blue; text-decoration: underline; cursor: pointer;\" href=\"https://poetrystores.co.za/ordertracker\">Track Order</a>",
+                        "Password_Reset_Link": "<a style=\"color: blue; text-decoration: underline; cursor: pointer;\" href=\"https://poetrystores.co.za/account/passwordreset\">Password Reset</a>",
+                        "Gift_Card_Status_Link": "<a style=\"color: blue; text-decoration: underline; cursor: pointer;\" href=\"https://poetrystores.co.za/giftcardcheckbalance\">GiftCard Status</a>",
+                        "Contact_Us_Link": "<a style=\"color: blue; text-decoration: underline; cursor: pointer;\" href=\"https://poetrystores.co.za/contact.html\">ContactUs</a>",
+                        "Register_Account": "<a style=\"color: blue; text-decoration: underline; cursor: pointer;\" href=\"https://poetrystores.co.za/account\">Registering an account</a>",
+                        "My_Profile": "https://poetrystores.co.za/account/profile/",
+                        "Our_Stores": "<a style=\"color: blue; text-decoration: underline; cursor: pointer;\" href=\"https://poetrystores.co.za/stores\">ourstores</a>",
+                        "Rewards_Dashboard": "<a style=\"color: blue; text-decoration: underline; cursor: pointer;\" href=\"https://poetrystores.co.za/on/demandware.store/Sites-CUM-Site/en_ZA/Loyalty-ShowDashboard?redirected=1\">RewardsDashboard</a>",
+                        "Returns_Policy": "<a style=\"color: blue; text-decoration: underline; cursor: pointer;\" href=\"https://poetrystores.co.za/returns-exchanges.html\">Returns Policy</a>",
+                        "Customer_Service_Phone": "0860 555 529",
+                        "Other_Payment_Options": "<a target=\"_blank\" style=\"color: black; text-decoration: underline; cursor: pointer;\" href=\"https://payflex.co.za/\">Payflex</a>\n- <a target=\"_blank\" style=\"color: black; text-decoration: underline; cursor: pointer;\" href=\"https://live.mobicred.co.za/web_mcrliv/run.w?run=application&merchantID=2059&returnUrl=https://www.poetrystores.co.za/\">Mobicred</a>\n- <a target=\"_blank\" style=\"color: black; text-decoration: underline; cursor: pointer;\" href=\"https://www.float.co.za/\">Float</a>\n- <a target=\"_blank\" style=\"color: black; text-decoration: underline; cursor: pointer;\" href=\"https://payjustnow.com/\">PAYJUSTNOW</a>",
+                        "Black_Friday_Promotions": "<a style=\"color: blue; text-decoration: underline; cursor: pointer;\" href=\"https://www.poetrystores.co.za/c/black-friday\">Black friday promotions</a>"
+                      }
+                      );
+
+                // Remove any items from the previous list that you don't want to send
+                //embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields(["Customer_ID"]);
+            });
+
+      embeddedservice_bootstrap.init(
+        '00Ddw0000007iNh',
+        'Cape_Union_Mart',
+        'https://capeunionmart--dev.sandbox.my.site.com/ESWCapeUnionMart1739532436560',
+        {
+          scrt2URL: 'https://capeunionmart--dev.sandbox.my.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading Embedded Messaging: ', err);
+    }
+  };
 </script>
-<script type='text/javascript' src='https://capeunionmart--dev.sandbox.my.site.com/ESWBskyTesting1741612500052/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
-</html>
+<script type='text/javascript' src='https://capeunionmart--dev.sandbox.my.site.com/ESWCapeUnionMart1739532436560/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+ 
